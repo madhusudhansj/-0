@@ -5,3 +5,5 @@ but its just the first day
 will use for as long as possible and come to a conclusion
 
 good options on collaborating
+
+let's code a program to calculate no of days alive - munka
