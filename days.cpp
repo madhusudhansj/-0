@@ -50,7 +50,7 @@ int totaldays()
 bool io()
 {
    char t;
-   char t2 = 'y';
+   const char t2 = 'y';
    string d;
    string m;
    string y;
@@ -70,6 +70,7 @@ bool io()
    cout << "hit y to calculate again or any key to exit" << endl;
    cin.clear();
    cin >> t;
+   cout << "checking why t is stuck at y " << t << endl;
    cin.ignore(numeric_limits<streamsize>::max(), '\n');
    return((t == t2) ? 1 : 0);
 }
@@ -80,9 +81,10 @@ cout << "i'm just hooked buddy, check this out" << endl;
 sleep(0);
 cout << "let's check the number of days since birth" << endl;
 sleep(0);
-while(io())
+int again = 1;
+while(again)
 {
-  io();
+  again = io();
 }
 return(0);
 }
