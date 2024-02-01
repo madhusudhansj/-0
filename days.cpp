@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<limits>
 #include<time.h>
 #include<unistd.h>
 #include<stdlib.h>
@@ -20,10 +21,9 @@ int cdd = now.tm_wday;
 bool isvalid(string d, string m, string y)
 {
    string f = d+m+y;
-   int l = f.length();
-   cout << "checking for addition " << l << endl;
-   for (int i = 0; i < l; i++)
-        if (isdigit(f[i]) == false)
+   cout << "checking for valid input . . . "<< endl;
+   for (unsigned int i = 0; i < f.size(); i++)
+        if (!isdigit(f[i]))
            return(0);
    dd = stoi(d);
    mm = stoi(m);
@@ -49,27 +49,34 @@ int totaldays()
 
 bool io()
 {
-   int t = 0;
+   char t;
+   char t2 = 'y';
    string d;
    string m;
    string y;
    cout << "enter DOB in DD MM YYYY format" << endl;
+   cin.clear();
    cin >> d>> m >> y;
+   cin.ignore(numeric_limits<streamsize>::max(), '\n');
    while (!isvalid(d,m,y))
    {
      cout << "dude enter any date between 1 1 1 till today in DD MM YYYY format" << endl;
+     cin.clear();
      cin >> d >> m >> y;
+     cin.ignore(numeric_limits<streamsize>::max(), '\n');
    }
    cout << "is it leap " << isleap(yyyy) << endl;
    cout << "days in the month " << daysinmonth(mm,yyyy) << endl;
-   cout << "hit 1 to calculate again" << endl;
+   cout << "hit y to calculate again or any key to exit" << endl;
+   cin.clear();
    cin >> t;
-   return(t);
+   cin.ignore(numeric_limits<streamsize>::max(), '\n');
+   return((t == t2) ? 1 : 0);
 }
 
 int main()
 {
-cout << "I solemnly swear that you're on the right path" << endl;
+cout << "i'm just hooked buddy, check this out" << endl;
 sleep(0);
 cout << "let's check the number of days since birth" << endl;
 sleep(0);
